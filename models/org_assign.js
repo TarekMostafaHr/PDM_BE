@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-	var Organizational_assignment = sequelize.define(
-		"organizational_assignment",
+	var OrgAssign = sequelize.define(
+		"org_assign",
 		{
 			company_code: DataTypes.STRING,
 			BU: DataTypes.STRING,
@@ -29,5 +29,5 @@ module.exports = (sequelize, DataTypes) => {
 			}
 		}
 	);
-	return Organizational_assignment;
+	return OrgAssign;
 };

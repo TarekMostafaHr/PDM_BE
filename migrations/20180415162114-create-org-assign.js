@@ -2,7 +2,7 @@
 module.exports = {
 	up: (queryInterface, Sequelize) => {
 		return queryInterface.createTable(
-			"organizational_assignments",
+			"org_assign",
 			{
 				id: {
 					allowNull: false,
@@ -71,13 +71,13 @@ module.exports = {
 				}
 			},
 			{
-				tableName: "organizational_assignment",
+				freezeTableName: true,
 				underscored: true,
 				paranoid: true
 			}
 		);
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable("organizational_assignments");
+		return queryInterface.dropTable("org_assign");
 	}
 };
