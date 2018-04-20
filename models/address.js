@@ -13,5 +13,10 @@ module.exports = (sequelize, DataTypes) => {
 		relationship: DataTypes.STRING,
 		phone: DataTypes.STRING
 	});
+
+	Address.associate = models => {
+		Address.belongsTo(models.user);
+	};
+
 	return Address;
 };

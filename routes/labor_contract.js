@@ -5,7 +5,7 @@ const { updateOrCreate, createBulk } = require("./util");
 
 // get all
 router.get("/", function(req, res) {
-	models.actions
+	models.labor_contract
 		.findAndCountAll()
 		.then(resp => {
 			res.json({ count: resp.count, rows: resp.rows });
@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
 
 // get one
 router.get("/:id", function(req, res) {
-	models.actions
+	models.labor_contract
 		.findById(req.params.id)
 		.then(resp => {
 			res.json({ resp });
@@ -25,27 +25,36 @@ router.get("/:id", function(req, res) {
 
 // create
 router.post("/create", function(req, res) {
-	updateOrCreate(models.actions, null, req.body, "create")
-		.then(result => res.json({ result: result }))
+	updateOrCreate(
+		models.labor_contract,
+		{ id: req.params.id },
+		req.body,
+		"create"
+	)
+		.then(result => res.json({ result }))
 		.catch(err => res.end(err));
 });
 
 // create bulk
 router.post("/create/bulk", function(req, res) {
-	createBulk(models.actions, req.body)
+	createBulk(models.labor_contract, req.body)
 		.then(result => res.json({ result }))
 		.catch(err => res.end(err));
 });
 
-// update one
-router.put("/:id", function(req, res) {
-	updateOrCreate(models.actions, { id: req.params.id }, req.body, "update")
+router.put("/:id", (req, res) => {
+	updateOrCreate(
+		models.labor_contract,
+		{ id: req.params.id },
+		req.body,
+		"update"
+	)
 		.then(result => res.json({ result }))
 		.catch(err => res.end(err));
 });
 
 router.delete("/:id/destroy", function(req, res) {
-	models.actions
+	models.labor_contract
 		.destroy({
 			where: {
 				id: req.params.id

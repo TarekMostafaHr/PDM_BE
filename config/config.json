@@ -4,6 +4,7 @@
 		"password": "ss311294",
 		"database": "pdm_dev",
 		"host": "127.0.0.1",
-		"dialect": "postgres"
+		"dialect": "postgres",
+		"define": { "underscored": true, "paranoid": true, "freezeTableName": true }
 	}
 }

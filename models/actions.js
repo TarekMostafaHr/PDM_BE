@@ -10,5 +10,8 @@ module.exports = (sequelize, DataTypes) => {
 		to: DataTypes.DATE
 	});
 
+	Actions.associations = models => {
+		Actions.belongsTo(models.user, { foreignKey: "emp_id" });
+	};
 	return Actions;
 };
